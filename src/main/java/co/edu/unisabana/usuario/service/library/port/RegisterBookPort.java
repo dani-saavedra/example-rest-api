@@ -2,8 +2,10 @@ package co.edu.unisabana.usuario.service.library.port;
 
 import co.edu.unisabana.usuario.service.library.model.Book;
 
+import java.util.List;
+
 public interface RegisterBookPort {
 
-    void registerBook(Book newBook);
+    List registerBook(Book newBook);
 }
 
