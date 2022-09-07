@@ -43,6 +43,6 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
                 return true;
             }
         }
-        throw new IllegalArgumentException("No existe libre para actualizar");
+        throw new IllegalArgumentException("No existe libro para actualizar");
     }
 }
