@@ -10,26 +10,39 @@ import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BookControllerTest extends AbstractTest{
+public class BookControllerTest extends AbstractTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    private static final String PATH_REGISTER ="/book/register";
+    private static final String PATH_REGISTER = "/book/register";
 
-    private static final String Path_DATOS ="/book/search";
+    private static final String Path_DATOS = "/book/search";
 
     @Test
-    public void Given_When_Then(){
-        BookDto dto = new BookDto("GOT",1996,"George R.R","Comercial","suave");
+    public void Given_BasicTest_When_callData_Then_succesful() {
+        BookDto dto = new BookDto("GOT", 1996, "George R.R", "Comercial", "suave");
 
-        ResponseEntity<BookReponse> result = restTemplate.postForEntity(PATH_REGISTER, dto ,BookReponse.class);
+        ResponseEntity<BookReponse> result = restTemplate.postForEntity(PATH_REGISTER, dto, BookReponse.class);
         assertEquals("Nuevo libro registrado", result.getBody().getData());
     }
 
-
     @Test
-    public void Given_Wrong_information_When_callDatos_Then_return_empty(){
-        ResponseEntity<BookReponse> result = restTemplate.getForEntity(Path_DATOS, BookReponse.class);
-        assertFalse(result.getBody().getData().isEmpty());
+    public void Given_NewInformation_callData_Then_succcessful() {
+        BookDto dto = new BookDto("GOT", 1996, "George R.R", "Comercial", "suave");
+        restTemplate.postForEntity(PATH_REGISTER, dto, BookReponse.class);
+
+        ResponseEntity<BookReponse> otroRegistro = restTemplate.postForEntity(PATH_REGISTER, dto, BookReponse.class);
+        assertEquals("Actualizada cantidad", otroRegistro.getBody().getData());
     }
+/*
+    @Test
+    public void Given_Wrong_information_When_callDatos_Then_return_empty() {
+        BookDto dto = new BookDto("GOT", 1996, "George R.R", "Comercial", "suave");
+        restTemplate.postForEntity(PATH_REGISTER, dto, BookReponse.class);
+
+        ResponseEntity<BookReponse> result = restTemplate.getForEntity(Path_DATOS ,BookReponse.class);
+        assertTrue(result.getBody().getData().isEmpty());
+    }
+
+ */
 }

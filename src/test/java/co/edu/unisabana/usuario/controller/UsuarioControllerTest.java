@@ -41,7 +41,7 @@ public class UsuarioControllerTest extends AbstractTest {
   public void Given_Ok_information_When_callDatos_Then_return_four_data() {
     ResponseEntity<UserDTOResponse> result = restTemplate.getForEntity(PATH_DATOS + "a",
         UserDTOResponse.class);
-    assertEquals(4, result.getBody().getData().size());
+    assertEquals(3, result.getBody().getData().size());
   }
 
   @Test
