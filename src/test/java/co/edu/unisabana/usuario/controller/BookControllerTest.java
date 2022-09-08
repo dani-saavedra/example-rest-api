@@ -16,7 +16,7 @@ public class BookControllerTest extends AbstractTest {
 
     private static final String PATH_REGISTER = "/book/register";
 
-    private static final String Path_DATOS = "/book/search";
+    private static final String Path_DATOS = "/book/search?q=";
 
     @Test
     public void Given_BasicTest_When_callData_Then_succesful() {
@@ -34,15 +34,15 @@ public class BookControllerTest extends AbstractTest {
         ResponseEntity<BookReponse> otroRegistro = restTemplate.postForEntity(PATH_REGISTER, dto, BookReponse.class);
         assertEquals("Actualizada cantidad", otroRegistro.getBody().getData());
     }
-/*
+
     @Test
     public void Given_Wrong_information_When_callDatos_Then_return_empty() {
         BookDto dto = new BookDto("GOT", 1996, "George R.R", "Comercial", "suave");
         restTemplate.postForEntity(PATH_REGISTER, dto, BookReponse.class);
 
-        ResponseEntity<BookReponse> result = restTemplate.getForEntity(Path_DATOS ,BookReponse.class);
+        ResponseEntity<BookReponse> result = restTemplate.getForEntity(Path_DATOS + "" ,BookReponse.class);
         assertTrue(result.getBody().getData().isEmpty());
     }
 
- */
+
 }
