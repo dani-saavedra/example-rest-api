@@ -54,7 +54,7 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
     }
 
     public boolean quantityCheck (BookEntity book){
-        if (book.getQuantity() <= 10){
+        if (book.getQuantity() < 10){
             return true;
         }
         return false;
