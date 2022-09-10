@@ -29,7 +29,13 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
 
     @Override
     public List<BookEntity> searchBook(String autor) {
-        return listBooks;
+        List<BookEntity> resultados = new ArrayList<>();
+        listBooks.forEach(dato -> {
+            if (dato.getAuthor().contains(autor)) {
+                resultados.add(dato);
+            }
+        });
+       return resultados;
     }
 
 

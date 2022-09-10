@@ -35,14 +35,4 @@ public class BookControllerTest extends AbstractTest {
         assertEquals("Actualizada cantidad", otroRegistro.getBody().getData());
     }
 
-    @Test
-    public void Given_Wrong_information_When_callDatos_Then_return_empty() {
-        BookDto dto = new BookDto("GOT", 1996, "George R.R", "Comercial", "suave");
-        restTemplate.postForEntity(PATH_REGISTER, dto, BookReponse.class);
-
-        ResponseEntity<BookReponse> result = restTemplate.getForEntity(Path_DATOS + "" ,BookReponse.class);
-        assertTrue(result.getBody().getData().isEmpty());
-    }
-
-
 }

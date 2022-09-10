@@ -4,13 +4,15 @@ import co.edu.unisabana.usuario.repository.dao.BookDao;
 import co.edu.unisabana.usuario.repository.dao.entity.BookEntity;
 import co.edu.unisabana.usuario.service.library.model.Book;
 import co.edu.unisabana.usuario.service.library.model.CategoryBook;
-import net.bytebuddy.asm.Advice;
-import org.assertj.core.internal.bytebuddy.implementation.bytecode.Throw;
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
+
+
 public class BookDaoTest {
 
+    private  List<BookEntity> list;
     BookDao bookDao = new BookDao();
     Book book = new Book("señor de los anillos", 1954, "Tolkien", false, CategoryBook.SOFT_COVER);
     Book book2 = new Book("Maze Runner", 2009, "James Dasher", false, CategoryBook.SOFT_COVER);
@@ -18,7 +20,7 @@ public class BookDaoTest {
 
     @Test
     public void Given_book_ok_When_registerBook_Then_success() {
-        List<BookEntity> list = bookDao.registerBook(book);
+        list = bookDao.registerBook(book);
         assertEquals(1, list.size());
     }
 
@@ -59,6 +61,16 @@ public class BookDaoTest {
         BookEntity bookEntity = new BookEntity("señor de los anillos", 1954, "Tolkien", false, "suave", 11);
         assertFalse(bookDao.quantityCheck(bookEntity));
 
+    }
+    @Test
+    public void Given_author_ok_When_search_then_succes(){
+        bookDao.registerBook(book);
+        assertEquals(1,bookDao.searchBook("Tolkien").size());
+    }
+    @Test
+    public void  Given_author_wrong_When_search_then_failed(){
+        bookDao.registerBook(book);
+        assertTrue(bookDao.searchBook("George").isEmpty());
     }
 }
 
