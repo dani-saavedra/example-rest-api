@@ -5,12 +5,14 @@ import co.edu.unisabana.usuario.service.library.port.RegisterBookPort;
 import co.edu.unisabana.usuario.service.library.port.SearchBookPort;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import co.edu.unisabana.usuario.service.library.port.AddBookPort;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-
+@ExtendWith(MockitoExtension.class)
 class BookTest {
 
     @InjectMocks
@@ -24,9 +26,7 @@ class BookTest {
 
     @Test
 public void Given_Category_Book_When_Registered_Book(){
-
-            CategoryBook category = CategoryBook.fromString("digital");
-            Book book = new Book("El señor de los anillos",1954,"J.R Tolkien",false,category);
+            Book book = new Book("El señor de los anillos",1954,"J.R Tolkien",false,CategoryBook.EBOOK);
             Mockito.when(searchBookPort.validateExistsBook(book.getName())).thenReturn(true);
             int result = registerBookLibrary.registerBook(book);
             Mockito.verify(addBookPort).addBook(book.getName());
