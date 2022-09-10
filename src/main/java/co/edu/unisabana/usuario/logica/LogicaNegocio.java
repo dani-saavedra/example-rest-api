@@ -2,6 +2,7 @@ package co.edu.unisabana.usuario.logica;
 
 import co.edu.unisabana.usuario.dto.BookDto;
 import co.edu.unisabana.usuario.service.library.model.Book;
+import co.edu.unisabana.usuario.service.library.model.CategoryBook;
 
 
 import java.util.ArrayList;
@@ -13,8 +14,8 @@ public class LogicaNegocio {
 
 
     private LogicaNegocio(){
-        Book book1 = new Book("El señor de los anillos", 1954,"J.R. Tolkien", false, "suave");
-        Book book2 = new Book("El señor de los anillos 2", 1963,"J.R. Tolkien", false, "duro");
+        Book book1 = new Book("El señor de los anillos", 1954,"J.R. Tolkien", false, CategoryBook.SOFT_COVER);
+        Book book2 = new Book("El señor de los anillos 2", 1963,"J.R. Tolkien", false, CategoryBook.HARD_COVER);
         listado.add(book1);
         listado.add(book2);
     }
