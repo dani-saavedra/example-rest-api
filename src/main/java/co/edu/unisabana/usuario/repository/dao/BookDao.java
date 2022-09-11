@@ -16,6 +16,9 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
 
     static List<BookEntity> listBooks = new ArrayList<>();
 
+    public List<BookEntity> getBooks(){
+        return listBooks;
+    }
     @Override
     public boolean validateExistsBook(String nameBook) {
         AtomicBoolean exists = new AtomicBoolean(false);
@@ -39,10 +42,23 @@ public class BookDao implements SearchBookPort, RegisterBookPort, AddBookPort {
     public boolean addBook(String name) {
         for (BookEntity book : listBooks) {
             if (book.getName().equals(name)) {
-                book.setQuantity(book.getQuantity() + 1);
+                if (book.getQuantity() >= 9){
+                    throw new IllegalArgumentException("Cantidad límite superada");
+                } else {
+                    book.setQuantity(book.getQuantity() + 1);
+                    return true;
+                }
+            }
+        }
+        throw new IllegalArgumentException("No existe libro para actualizar");
+    }
+    public boolean removeBook(String name) {
+        for (BookEntity book : listBooks) {
+            if (book.getName().equals(name)) {
+                book.setQuantity(book.getQuantity() - 1);
                 return true;
             }
         }
-        throw new IllegalArgumentException("No existe libre para actualizar");
+        throw new IllegalArgumentException("No existe libro para remover");
     }
 }
