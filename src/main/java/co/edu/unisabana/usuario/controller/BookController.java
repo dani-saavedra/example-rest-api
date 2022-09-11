@@ -19,6 +19,7 @@ public class BookController {
     private final RegisterBookLibrary registerBookLibrary;
 
 
+
     public BookController(RegisterBookLibrary registerBookLibrary) {
         this.registerBookLibrary = registerBookLibrary;
     }
@@ -38,18 +39,18 @@ public class BookController {
     public ArrayList<BookEntity> findbookbyauthor(@PathVariable String author){
         return registerBookLibrary.findbookbyauthor();
     }*/
-    @GetMapping("search/{author}")
+    @GetMapping("/search/{author}")
     BookEntity bookEntity(@PathVariable String author){
-        if (Objects.isNull(registerBookLibrary.findbookbyauthor(author))) {
-            throw new IllegalArgumentException("Escriba un autor valido");
-        } else {
+        if (Objects.nonNull(registerBookLibrary.findbookbyauthor(author))) {
             return registerBookLibrary.findbookbyauthor(author);
+        } else {
+            return null;
         }
     }
-    @DeleteMapping(value = "remove/{name}")
+    @DeleteMapping(value = "/remove/{name}")
     int bookEntitydelete(@PathVariable String name){
         if (Objects.isNull(registerBookLibrary.removebookbyname(name))) {
-            throw new IllegalArgumentException("Escriba un nombre valido");
+            throw new NullPointerException("Escriba un nombre valido");
         } else {
             return registerBookLibrary.removebookbyname(name);
         }

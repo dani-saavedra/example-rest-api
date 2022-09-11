@@ -6,6 +6,8 @@ import co.edu.unisabana.usuario.dto.BookReponse;
 import co.edu.unisabana.usuario.repository.dao.entity.BookEntity;
 import co.edu.unisabana.usuario.service.library.model.Book;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.internal.matchers.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +22,7 @@ private TestRestTemplate restTemplate;
 
 
     private static final String PATH_REGISTER = "/book/register";
-    private static final String PATH_SEARCH = "/book/search";
+    private static final String PATH_SEARCH = "/book/search/";
 
     @Test
     public void Given_registerNewBook_WhenRegisterBooks_Then_RegisterMessage (){
@@ -36,5 +38,17 @@ private TestRestTemplate restTemplate;
         ResponseEntity<BookReponse> otroRegistro =
                 restTemplate.postForEntity(PATH_REGISTER, dto, BookReponse.class);
         assertEquals("Actualizada cantidad", otroRegistro.getBody().getData());
+    }
+    @Test
+    public void Given_any_name_When_search_book_by_author_Then_show_book(){
+        BookDto dto = new BookDto("Cien años de soledad", 1967, "Gabriel Garcia Marquez", "Comercial", "duro");
+        restTemplate.postForEntity(PATH_REGISTER, dto, BookReponse.class);
+        ResponseEntity<BookEntity> book = restTemplate.getForEntity(PATH_SEARCH+ "Gabriel Garcia Marquez", BookEntity.class);
+        assertEquals("Cien años de soledad", book.getBody().getName());
+    }
+    @Test
+    public void Given_null_name_When_search_book_by_author_Then_show_null(){
+        ResponseEntity<BookEntity> book = restTemplate.getForEntity(PATH_SEARCH, BookEntity.class);
+        assertEquals(null, book.getBody().getName());
     }
 }
