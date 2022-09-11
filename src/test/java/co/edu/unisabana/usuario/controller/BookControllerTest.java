@@ -3,6 +3,7 @@ package co.edu.unisabana.usuario.controller;
 import co.edu.unisabana.usuario.AbstractTest;
 import co.edu.unisabana.usuario.dto.BookDto;
 import co.edu.unisabana.usuario.dto.BookReponse;
+import co.edu.unisabana.usuario.repository.dao.entity.BookEntity;
 import co.edu.unisabana.usuario.service.library.model.Book;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
