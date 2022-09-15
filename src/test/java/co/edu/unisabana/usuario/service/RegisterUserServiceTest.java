@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
 public class RegisterUserServiceTest {
 
-    @InjectMocks
+   /* @InjectMocks
     private RegisterUserService service;
 
     @Mock
@@ -41,12 +41,12 @@ public class RegisterUserServiceTest {
         });
     }
 
-    /**
+
      * Preparar la data
      * Invocar la prueba
      * Verificar resultados :Asserts(assertEquals,assertTrue,assertFalse,assertThrows)
      * Verify(Garantizar que se invoco algo, adicional, verifican que se invoco con la data correcta)
-     */
+
     @Test
     public void Given_data_ok_When_RegisterUser_Then_successful() {
         User user = new User();
@@ -60,10 +60,10 @@ public class RegisterUserServiceTest {
     }
 
 
-    /**
+
      * ¿Cuantas pruebas unitarias debe tener un metodo?
      * Cuantas salidas /variaciones tiene su codigo
-     */
+
     @Test
     public void Give_dontSendCorrectIinformantion_When_Registeruser_Then_throwIllegalArgument() {
         assertThrows(IllegalArgumentException.class, () -> {
@@ -80,6 +80,6 @@ public class RegisterUserServiceTest {
         Mockito.verify(registerUserPort).addNewUser(user);
         // assertTrue(result);
     }
-
+*/
 
 }

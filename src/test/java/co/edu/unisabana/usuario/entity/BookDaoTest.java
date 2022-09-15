@@ -52,7 +52,7 @@ public class BookDaoTest {
 
     @Test
     public void Given_quantity_ok_When_quantityCheck_Then_return_true() {
-        BookEntity bookEntity = new BookEntity("señor de los anillos", 1954, "Tolkien", false, "suave", 10);
+        BookEntity bookEntity = new BookEntity("señor de los anillos", 1954, "Tolkien", false, "suave", 9);
         assertTrue(bookDao.quantityCheck(bookEntity));
 
     }
@@ -65,7 +65,7 @@ public class BookDaoTest {
     @Test
     public void Given_author_ok_When_search_then_succes(){
         bookDao.registerBook(book);
-        assertEquals(1,bookDao.searchBook("Tolkien").size());
+        assertFalse(bookDao.searchBook("Tolkien").isEmpty());
     }
     @Test
     public void  Given_author_wrong_When_search_then_failed(){
