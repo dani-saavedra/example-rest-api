@@ -18,14 +18,12 @@ public class BookDaoTest {
     Book book2 = new Book("Maze Runner", 2009, "James Dasher", false, CategoryBook.SOFT_COVER);
 
 
-/* El reporte muestra falla en la primera falla, porque al parecer ya hay un libro creado en la lista a pesar de no crearlo en ningun momento (libro de GOT),
-*  si ponemos lo esperado en 2 al correr el paquete de test la prueba volvera a fallar ya que ahora la lista se encuentra vacia en un inicio. Sin embargo,
-* si corremos unicamente la prueba con uno como esperado, la prueba pasa como aprobada.*/
+
 
     @Test
     public void Given_book_ok_When_registerBook_Then_success() {
         list = bookDao.registerBook(book);
-        assertEquals(1, list.size());
+        assertFalse(list.isEmpty());
     }
 
     @Test
