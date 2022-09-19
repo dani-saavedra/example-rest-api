@@ -1,12 +1,26 @@
 package co.edu.unisabana.usuario;
 
 import co.edu.unisabana.usuario.service.ClasePrueba;
+import co.edu.unisabana.usuario.service.RepositoryBook;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
 public class ClasePruebaTest {
 
-    ClasePrueba servicio = new ClasePrueba();
+    @Mock
+    RepositoryBook repositoryBook;
+    ClasePrueba servicio = new ClasePrueba(repositoryBook);
+
+    @Test
+    public void Register_Book() {
+        Mockito
+                .when(repositoryBook.guardarLibro(new Book("daniel", "Programación")))
+                .thenReturn(10);
+        Book libroGuardado = servicio.guardar("daniel", "Programación");
+        Assertions.assertEquals(10, libroGuardado.getNumero());
+    }
 
     //TODOS LOS TEST, deben ser publicos y no retonar nada (void)
     /*
