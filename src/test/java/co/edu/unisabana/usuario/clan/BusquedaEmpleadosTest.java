@@ -33,7 +33,7 @@ class BusquedaEmpleadosTest {
 
         Assertions.assertEquals(true, juan.isLonger());
         //Adicional a los asserts, utilizamos verify para verificar si un llamado fue hecho o no
-        assertEquals(2,3);
+        Mockito.verify(employeeRepository).searchEmployee(employeeName);
 
     }
 }
