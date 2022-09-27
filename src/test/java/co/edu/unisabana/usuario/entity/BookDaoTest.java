@@ -18,10 +18,12 @@ public class BookDaoTest {
     Book book2 = new Book("Maze Runner", 2009, "James Dasher", false, CategoryBook.SOFT_COVER);
 
 
+
+
     @Test
     public void Given_book_ok_When_registerBook_Then_success() {
         list = bookDao.registerBook(book);
-        assertEquals(1, list.size());
+        assertFalse(list.isEmpty());
     }
 
     @Test
@@ -70,7 +72,7 @@ public class BookDaoTest {
     @Test
     public void  Given_author_wrong_When_search_then_failed(){
         bookDao.registerBook(book);
-        assertTrue(bookDao.searchBook("George").isEmpty());
+        assertTrue(bookDao.searchBook("Ricardo").isEmpty());
     }
 }
 
