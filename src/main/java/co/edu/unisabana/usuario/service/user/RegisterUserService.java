@@ -30,9 +30,4 @@ public class RegisterUserService {
             return 3;
         }
     }
-
-    public int sumar(){
-        return 2+3;
-    }
-
 }
