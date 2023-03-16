@@ -1,4 +1,4 @@
-package co.edu.unisabana.usuario.controller;
+package co.edu.unisabana.usuario.integration.controller;
 
 import co.edu.unisabana.usuario.AbstractTest;
 import co.edu.unisabana.usuario.dto.BookDto;
