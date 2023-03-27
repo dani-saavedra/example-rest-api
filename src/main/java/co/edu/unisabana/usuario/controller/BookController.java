@@ -32,13 +32,4 @@ public class BookController {
 
 
     }
-
-    @GetMapping("/search")
-    public List<BookDto> findBooks() {
-        return searchBookLibrary.searchBooks()
-                .stream()
-                .map(BookDto::fromModel)
-                .collect(Collectors.toList());
-    }
-
 }
