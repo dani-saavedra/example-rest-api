@@ -43,7 +43,9 @@ public class ClasePrueba {
         }
     }
     public int suma(int numero1, int numero2){
-        return numero1 + numero2;
+        int suma = numero1 + numero2;
+        //verificar deso
+        return suma;
 
     }
 
