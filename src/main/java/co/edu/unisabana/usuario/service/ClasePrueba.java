@@ -42,6 +42,10 @@ public class ClasePrueba {
             return 1;
         }
     }
+    public int suma(int numero1, int numero2){
+        return numero1 + numero2;
+
+    }
 
     public int restar(int numero1, int numero2) {
         return numero1 - numero2;
