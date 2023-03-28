@@ -42,10 +42,10 @@ public class ClasePrueba {
             return 1;
         }
     }
-
-    public int suma(int numero1, int numero2) {
+    public int suma(int numero1, int numero2){
         System.out.println("Voy a sumar " + numero1);
-        return numero1 + numero2;
+        int suma = numero1 + numero2;
+        return suma;
 
     }
 
