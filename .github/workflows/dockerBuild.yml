@@ -2,9 +2,7 @@ name: Build image Docker
 
 on:
   push:
-    branches: [ "main" ]
-permissions:
-  contents: read
+    branches: [ "miFakeDevelop" ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,7 +21,7 @@ jobs:
       - uses: mr-smithers-excellent/docker-build-push@v5
         name: Build & push Docker image
         with:
-          image: danieludea28/example
+          image: danieludea28/grandeJose
           tags: latest
           registry: docker.io
           dockerfile: Dockerfile
