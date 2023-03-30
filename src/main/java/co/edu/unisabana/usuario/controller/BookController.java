@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class BookController {
 
-    private final RegisterBookLibrary registerBookLibrary;
+    private final RegisterBookLibrary registerBookLibrary
     private final SearchBookLibrary searchBookLibrary;
 
     // Pendiente validar uso de exception handler
