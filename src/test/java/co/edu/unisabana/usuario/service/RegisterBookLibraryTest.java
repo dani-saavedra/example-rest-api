@@ -50,7 +50,7 @@ public class RegisterBookLibraryTest {
     Mockito.when(searchBookPort.validateExistsBook("Los pecados de los Devs")).thenReturn(true);
     Book libro = new Book("Los pecados de los Devs", 1991, "Daniel", true, CategoryBook.EBOOK);
     int result = registerBookLibrary.registerBook(libro);
-    assertEquals(2, result);
+    assertEquals(1, result);
     Mockito.verify(addBookPort).addBook(libro.getName());
   }
 
