@@ -1,34 +1,27 @@
 version: "3.8"
 services:
   mysqlocal:
-    image: mysql:latest #descargarla
-    container_name: mysqlocal
-    ports:
-      - "3306:3306"
-    volumes:
-      - data-controlT:/var/lib/mysql
+    image: mysql:latest
     environment:
       MYSQL_DATABASE: library
       MYSQL_ROOT_PASSWORD: pass
+    ports:
+      - "3306:3306"
     networks:
-      - controlT
+      - sabanaRed
   api:
-    container_name: example-rest-api
     image: danieludea28/api-recurzo-confi
-    #build: CREO LA IMAGEN DESDE UN DOCKERFILE
+      #Cuando quiera construir la imagen desde cero
+    #build:
      # context: ./
-      #dockerfile: ./Dockerfile
+      #dockerfile: Dockerfile
     ports:
       - "8081:8081"
-    networks:
-      - controlT
     environment:
       MYSQL_HOST: mysqlocal
-    restart: always
     depends_on:
       - mysqlocal
+    networks:
+      - sabanaRed
 networks:
-  controlT:
-volumes:
-  data-controlT:
-    name: data-controlT
+  sabanaRed:
